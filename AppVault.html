@@ -1,0 +1,1338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0f1a" />
+
+  <!-- Primary Meta -->
+  <title>KDBW Studio — Apps</title>
+  <meta name="description" content="Official home for apps by KDBW Studio. Find features, support, and policies." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="KDBW Studio — Apps" />
+  <meta property="og:description" content="Official home for apps by KDBW Studio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root{
+      --bg-0: #070a12;
+      --bg-1: #0b0f1a;
+      --bg-2: #0f1526;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.09);
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.14);
+      --text: #f6f7fb;
+      --muted: #b9bfd6;
+      --accent: #7aa2ff;
+      --accent-2: #9dffcf;
+      --danger: #ff7a7a;
+      --shadow-1: 0 8px 24px rgba(0,0,0,0.25);
+      --shadow-2: 0 18px 60px rgba(0,0,0,0.45);
+      --radius-xl: 22px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --max: 1100px;
+      --focus: 0 0 0 3px rgba(122,162,255,0.28);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 10% 10%, rgba(122,162,255,0.11), transparent 60%),
+        radial-gradient(900px 600px at 90% 20%, rgba(157,255,207,0.09), transparent 60%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-0) 60%, #05070e 100%);
+      line-height: 1.45;
+    }
+
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    .container{
+      width:min(100% - 32px, var(--max));
+      margin-inline:auto;
+    }
+
+    /* Header */
+    .site-header{
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: linear-gradient(180deg, rgba(7,10,18,0.95), rgba(7,10,18,0.65));
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-row{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .brand-mark{
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 4px rgba(122,162,255,0.14);
+      flex: 0 0 auto;
+    }
+    .brand small{
+      display:block;
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 1px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap: 18px;
+      font-size: 14.5px;
+      color: var(--muted);
+    }
+    .nav a:hover{color: var(--text)}
+
+    .nav-toggle{
+      display:none;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      cursor:pointer;
+      padding: 0;
+    }
+    .nav-toggle span{
+      display:block;
+      height: 2px;
+      width: 18px;
+      background: var(--text);
+      margin: 5px auto;
+      border-radius: 2px;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 68px 0 28px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+    .eyebrow .dot{
+      width: 6px; height: 6px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+    .hero h1{
+      font-size: clamp(30px, 3.7vw, 44px);
+      line-height: 1.08;
+      margin: 14px 0 10px;
+    }
+    .hero .subhead{
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0 0 20px;
+    }
+    .hero-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      font-weight: 650;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, opacity .12s ease;
+      cursor:pointer;
+      white-space: nowrap;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
+
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent), #86b1ff 40%, var(--accent-2) 120%);
+      color: #05070e;
+      box-shadow: var(--shadow-1);
+    }
+    .btn.secondary{
+      background: var(--panel);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn.ghost{
+      background: transparent;
+      border-color: var(--border);
+      color: var(--muted);
+    }
+    .btn.ghost:hover{color: var(--text)}
+
+    /* Sections */
+    .section{padding: 64px 0;}
+    .section.alt{
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.03), transparent);
+    }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .section-head h2{
+      font-size: clamp(22px, 2.4vw, 30px);
+      margin: 0 0 6px;
+    }
+    .section-head p{
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* App Carousel */
+    .apps-shell{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      box-shadow: var(--shadow-1);
+    }
+
+    .carousel{
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    }
+
+    .carousel-track{
+      display:flex;
+      transition: transform 360ms cubic-bezier(0.2, 0.9, 0.2, 1);
+      will-change: transform;
+    }
+
+    .carousel-slide{
+      min-width: 100%;
+      padding: 22px 18px 18px;
+      display:grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+      align-items:center;
+    }
+
+    .app-media{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      justify-items: start;
+    }
+
+    .app-icon{
+      width: 88px;
+      height: 88px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(122,162,255,0.22), rgba(157,255,207,0.18));
+      border: 1px solid var(--border-strong);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    .app-badges{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .app-badge{
+      font-size: 11.5px;
+      color: var(--muted);
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      padding: 5px 8px;
+      border-radius: 999px;
+    }
+
+    .app-copy h3{
+      margin: 0 0 6px;
+      font-size: 22px;
+    }
+    .app-copy .tagline{
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    .app-copy .blurb{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14.8px;
+    }
+
+    .app-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .carousel-controls{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .control-group{
+      display:flex;
+      gap: 8px;
+    }
+
+    .nav-btn{
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition: background .12s ease, border-color .12s ease, transform .12s ease, opacity .12s ease;
+    }
+    .nav-btn:hover{transform: translateY(-1px); border-color: var(--border-strong)}
+    .nav-btn:disabled{opacity: .45; cursor:not-allowed; transform:none}
+
+    .dots{
+      display:flex;
+      align-items:center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+    .dot-btn{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0;
+      cursor:pointer;
+    }
+    .dot-btn[aria-current="true"]{
+      width: 22px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color: transparent;
+    }
+
+    .app-details-panel{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 14px;
+    }
+
+    .panel{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+    }
+    .panel h4{margin: 0 0 8px; font-size: 16px;}
+    .panel p{margin: 0 0 10px; color: var(--muted); font-size: 14.4px;}
+    .panel ul{margin: 0; padding-left: 18px; color: var(--muted); font-size: 14.2px;}
+
+    .kv{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .kv-row{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 9px 10px;
+      font-size: 12.8px;
+    }
+    .kv-row span{color: var(--muted)}
+    .kv-row strong{font-weight: 650}
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .form{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      box-shadow: var(--shadow-1);
+    }
+    .field-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    label{
+      display:block;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    input, textarea, select{
+      width: 100%;
+      margin-top: 6px;
+      padding: 11px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.2);
+      color: var(--text);
+      outline: none;
+    }
+    input::placeholder, textarea::placeholder{
+      color: rgba(185,191,214,0.65);
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(122,162,255,0.6);
+      box-shadow: var(--focus);
+    }
+
+    .form-actions{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .form-hint{
+      color: var(--muted);
+      font-size: 12.2px;
+    }
+
+    .contact-card{
+      background: linear-gradient(180deg, var(--panel), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+    }
+    .contact-card h3{margin:0 0 8px; font-size: 20px}
+    .contact-card p{margin:0 0 14px; color: var(--muted)}
+
+    .contact-links{
+      display:grid;
+      gap: 8px;
+    }
+    .contact-link{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 11px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+    }
+    .contact-link span{color: var(--muted)}
+
+    /* Policies */
+    .policy-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .policy-card{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+    }
+    .policy-card h3{margin: 0 0 6px; font-size: 18px;}
+    .policy-card p{margin: 0 0 10px; color: var(--muted);}
+
+    details{
+      border-top: 1px dashed rgba(255,255,255,0.12);
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    summary{
+      cursor:pointer;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+    summary:hover{color: var(--text)}
+
+    /* Footer */
+    .site-footer{
+      border-top: 1px solid var(--border);
+      padding: 30px 0 46px;
+      color: var(--muted);
+    }
+    .footer-row{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+    }
+    .footer-links{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* Utilities */
+    .sr-only{
+      position:absolute !important;
+      height:1px; width:1px;
+      overflow:hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+    }
+
+    .pill-row{
+      display:flex; gap: 8px; flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .pill{
+      font-size: 11.5px;
+      color: var(--muted);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 6px 9px;
+      border-radius: 999px;
+    }
+
+    /* Focus styles */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible, select:focus-visible{
+      outline: none;
+      box-shadow: var(--focus);
+      border-color: rgba(122,162,255,0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 1000px){
+      .hero-grid{grid-template-columns: 1fr;}
+      .carousel-slide{grid-template-columns: 1fr;}
+      .app-details-panel{grid-template-columns: 1fr;}
+    }
+
+    @media (max-width: 820px){
+      .contact-grid{grid-template-columns: 1fr;}
+      .policy-grid{grid-template-columns: 1fr;}
+    }
+
+    @media (max-width: 720px){
+      .nav{
+        position: absolute;
+        right: 16px;
+        top: 62px;
+        flex-direction: column;
+        background: #090d1a;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 10px;
+        display: none;
+        min-width: 175px;
+      }
+      .nav.open{display:flex}
+      .nav-toggle{display:block}
+      .section-head{flex-direction: column; align-items: flex-start;}
+      .field-row{grid-template-columns: 1fr;}
+      .footer-row{flex-direction: column; align-items: flex-start;}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .carousel-track{transition: none;}
+      .btn{transition: none;}
+      .nav-btn{transition: none;}
+    }
+  </style>
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="#home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>
+          KDBW Studio
+          <small>Apps & Support</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="primary-nav">
+        <a href="#apps">Apps</a>
+        <a href="#policies">Policies</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO / HOME -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span> Independent apps</span>
+          <h1>A simple hub for everything we build.</h1>
+          <p class="subhead">
+            Discover our apps, read policies, and get support in one place.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#apps">Browse apps</a>
+            <a class="btn secondary" href="#contact">Support</a>
+            <a class="btn ghost" href="#policies">Policies</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill">Fast & lightweight</span>
+            <span class="pill">Mobile-first</span>
+            <span class="pill">Easy to update</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPS -->
+    <section id="apps" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Apps</h2>
+          </div>
+          <div class="control-group">
+            <button class="btn ghost" id="toggle-autoplay" type="button">Autoplay: On</button>
+            <a class="btn secondary" href="#contact">Get help</a>
+          </div>
+        </div>
+
+        <div class="apps-shell">
+          <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Featured apps">
+            <div class="carousel-track" id="carousel-track"></div>
+          </div>
+
+          <div class="carousel-controls">
+            <div class="control-group">
+              <button class="nav-btn" id="prev-btn" type="button" aria-label="Previous app">
+                ◀
+              </button>
+              <button class="nav-btn" id="next-btn" type="button" aria-label="Next app">
+                ▶
+              </button>
+            </div>
+            <div class="dots" id="carousel-dots" aria-label="Carousel pagination"></div>
+          </div>
+
+          <!-- Details BELOW carousel, updated when slide changes -->
+          <div class="app-details-panel">
+            <div class="panel" id="app-long-description">
+              <!-- JS injects content -->
+            </div>
+            <div class="panel">
+              <h4>Quick info</h4>
+              <div class="kv" id="app-kv"></div>
+              <div style="height: 10px"></div>
+              <h4>Support shortcuts</h4>
+              <div class="kv" id="app-support-kv"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POLICIES -->
+    <section id="policies" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Policies & trust</h2>
+            <p>Centralized policy links plus per-app notes if needed.</p>
+          </div>
+        </div>
+
+        <div class="policy-grid">
+          <article class="policy-card">
+            <h3>Privacy policy</h3>
+            <p>
+              A broad policy that applies across your apps. You can also link to
+              app-specific policies.
+            </p>
+            <a class="btn secondary" id="privacy-link" href="#" target="_blank" rel="noopener">Open privacy policy</a>
+            <details>
+              <summary>Template-friendly tips</summary>
+              <p>
+                If your app collects no data, you can state that clearly and keep this
+                page concise. For apps with analytics or accounts, list categories and
+                purposes in plain language.
+              </p>
+            </details>
+          </article>
+
+          <article class="policy-card">
+            <h3>Terms of use</h3>
+            <p>Optional for simple apps, recommended for subscriptions or accounts.</p>
+            <a class="btn secondary" id="terms-link" href="#" target="_blank" rel="noopener">Open terms</a>
+            <details>
+              <summary>When you really need this</summary>
+              <p>
+                Subscriptions, user-generated content, or liability-sensitive features
+                benefit from a clear terms page.
+              </p>
+            </details>
+          </article>
+
+          <article class="policy-card">
+            <h3>Support policy</h3>
+            <p>Set expectations on response times, platforms supported, and bug reporting.</p>
+            <a class="btn secondary" href="#contact">Contact support</a>
+            <details>
+              <summary>Suggested bullets</summary>
+              <ul>
+                <li>Typical response window (e.g., 1–3 business days)</li>
+                <li>Supported iOS versions</li>
+                <li>How to include screenshots/logs</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="policy-card">
+            <h3>Refund guidance</h3>
+            <p>
+              For iOS, refunds are generally handled by Apple. You can explain that
+              gently here.
+            </p>
+            <a class="btn secondary" href="#contact">Ask a question</a>
+            <details>
+              <summary>Note</summary>
+              <p>
+                Keep this short and link to Apple’s official refund flow if you want.
+              </p>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Contact</h2>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <form class="form" id="contact-form">
+            <div class="field-row">
+              <label>
+                Name
+                <input name="name" type="text" placeholder="Your name" autocomplete="name" />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" placeholder="you@email.com" autocomplete="email" />
+              </label>
+            </div>
+
+            <label>
+              App (optional)
+              <select name="app" id="app-select">
+                <option value="">General inquiry</option>
+              </select>
+            </label>
+
+            <label>
+              Message
+              <textarea name="message" rows="6" placeholder="Tell me what you need..." required></textarea>
+            </label>
+
+            <div class="form-actions">
+              <button class="btn primary" type="submit">Create email</button>
+              <span class="form-hint">This opens your email client with a prefilled message.</span>
+            </div>
+          </form>
+
+          <aside class="contact-card">
+            <h3>Support options</h3>
+            <div class="contact-links">
+              <a class="contact-link" id="support-email-link" href="#">
+                <strong>Email</strong>
+                <span id="support-email-text">example@domain.com</span>
+              </a>
+              <a class="contact-link" href="#apps">
+                <strong>App list</strong>
+                <span>Features & versions</span>
+              </a>
+              <a class="contact-link" href="#policies">
+                <strong>Policies</strong>
+                <span>Privacy & terms</span>
+              </a>
+            </div>
+
+            <div style="height: 14px"></div>
+            <div class="panel" style="padding: 14px; border-radius: var(--radius-md)">
+              <h4 style="margin-bottom: 6px;">Tip for App Store review</h4>
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span id="year"></span> KDBW Studio</span>
+      <div class="footer-links">
+        <a href="#apps">Apps</a>
+        <a href="#policies">Policies</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /**
+     * --------- CONFIG: Edit this to add/modify apps ---------
+     *
+     * For each app, you can supply:
+     * - name
+     * - tagline
+     * - appStoreUrl
+     * - iconText (fallback if you don't want an image yet)
+     * - iconUrl (optional: set to a real image path)
+     * - platforms
+     * - version
+     * - updated
+     * - priceLabel
+     * - shortBlurb
+     * - longDescription (array of paragraphs)
+     * - features (array)
+     * - policyUrls { privacy, terms, support }
+     */
+    const SITE_CONFIG = {
+      studioName: "KDBW Studio",
+      supportEmail: "support@yourdomain.com",
+      globalPrivacyUrl: "#",
+      globalTermsUrl: "#",
+      autoplayMs: 4500,
+    };
+
+    const APPS = [
+      {
+        id: "dilemma",
+        name: "Dilemma",
+        tagline: "Tiny decisions. Zero overthinking.",
+        appStoreUrl: "https://apps.apple.com/",
+        iconText: "D",
+        iconUrl: "",
+        platforms: "iOS",
+        version: "1.0",
+        updated: "2025-12-10",
+        priceLabel: "Free",
+        shortBlurb: "A playful decision toolkit featuring wheels, coin flips, and more.",
+        longDescription: [
+          "Dilemma is your fast, fun decision companion. When your brain is stuck on trivial choices, this app gets you moving in seconds.",
+          "Start with a spinning wheel or coin flip, then explore quick generators and mini tools designed for everyday life.",
+        ],
+        features: [
+          "Spinning wheel",
+          "Finger roulette",
+          "Coin flip",
+          "Number generator",
+          "Clean, minimalist UI",
+        ],
+        policyUrls: {
+          privacy: "#",
+          terms: "#",
+          support: "#",
+        }
+      },
+      {
+        id: "rattleTracker",
+        name: "RattleTracker",
+        tagline: "Find that rattle. Fix that car.",
+        appStoreUrl: "https://apps.apple.com/",
+        iconText: "R",
+        iconUrl: "",
+        platforms: "iOS",
+        version: "1.0",
+        updated: "2025-12-10",
+        priceLabel: "Free",
+        shortBlurb: "Combine with our vibronic sensors and find that creak.",
+        longDescription: [
+          "RattleTracker blah blha blah blah blah blah blah blah blah blah blha blah blah blah blah blah blah blah blah blha blah blah blah blah blah blah blah blah blha blah blah blah blah blah blah blah",
+        ],
+        features: [
+          "cars",
+          "virbrations",
+          "sensing",
+          "blutooth",
+          "unsure",
+        ],
+        policyUrls: {
+          privacy: "#",
+          terms: "#",
+          support: "#",
+        }
+      }
+      // Add your next apps here...
+    ];
+
+    /**
+     * --------- Header mobile nav ---------
+     */
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('primary-nav');
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }));
+    }
+
+    /**
+     * --------- Global text injection ---------
+     */
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Brand name in title + header
+    document.title = `${SITE_CONFIG.studioName} — Apps`;
+    const brandTextNode = document.querySelector('.brand span');
+    if (brandTextNode && brandTextNode.firstChild) {
+      // Keep small label, replace studio name text node if possible
+      brandTextNode.childNodes[0].textContent = SITE_CONFIG.studioName + "\n          ";
+    }
+
+    // Policy links
+    const privacyLink = document.getElementById('privacy-link');
+    const termsLink = document.getElementById('terms-link');
+    if (privacyLink) privacyLink.href = SITE_CONFIG.globalPrivacyUrl || '#';
+    if (termsLink) termsLink.href = SITE_CONFIG.globalTermsUrl || '#';
+
+    // Support email link
+    const supportEmailText = document.getElementById('support-email-text');
+    const supportEmailLink = document.getElementById('support-email-link');
+    if (supportEmailText) supportEmailText.textContent = SITE_CONFIG.supportEmail;
+    if (supportEmailLink) supportEmailLink.href = `mailto:${SITE_CONFIG.supportEmail}`;
+
+    /**
+     * --------- Carousel rendering ---------
+     */
+    const track = document.getElementById('carousel-track');
+    const dotsWrap = document.getElementById('carousel-dots');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const autoplayToggle = document.getElementById('toggle-autoplay');
+
+    const longDescPanel = document.getElementById('app-long-description');
+    const kvPanel = document.getElementById('app-kv');
+    const supportKvPanel = document.getElementById('app-support-kv');
+    const appSelect = document.getElementById('app-select');
+
+    let index = 0;
+    let autoplayOn = true;
+    let autoplayTimer = null;
+
+    function createIcon(app) {
+      if (app.iconUrl) {
+        const img = document.createElement('img');
+        img.src = app.iconUrl;
+        img.alt = `${app.name} icon`;
+        img.width = 88;
+        img.height = 88;
+        img.style.borderRadius = '20px';
+        img.style.border = '1px solid var(--border-strong)';
+        img.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,0.06)';
+        return img;
+      }
+      const div = document.createElement('div');
+      div.className = 'app-icon';
+      div.textContent = app.iconText || app.name.slice(0,1).toUpperCase();
+      return div;
+    }
+
+    function renderSlides() {
+      if (!track) return;
+      track.innerHTML = '';
+
+      APPS.forEach((app, i) => {
+        const slide = document.createElement('article');
+        slide.className = 'carousel-slide';
+        slide.setAttribute('role', 'group');
+        slide.setAttribute('aria-roledescription', 'slide');
+        slide.setAttribute('aria-label', `${i + 1} of ${APPS.length}`);
+
+        const media = document.createElement('div');
+        media.className = 'app-media';
+        media.appendChild(createIcon(app));
+
+        const badges = document.createElement('div');
+        badges.className = 'app-badges';
+        [app.platforms, app.priceLabel].filter(Boolean).forEach(b => {
+          const s = document.createElement('span');
+          s.className = 'app-badge';
+          s.textContent = b;
+          badges.appendChild(s);
+        });
+        media.appendChild(badges);
+
+        const copy = document.createElement('div');
+        copy.className = 'app-copy';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = app.name;
+
+        const tagline = document.createElement('p');
+        tagline.className = 'tagline';
+        tagline.textContent = app.tagline || '';
+
+        const blurb = document.createElement('p');
+        blurb.className = 'blurb';
+        blurb.textContent = app.shortBlurb || '';
+
+        const actions = document.createElement('div');
+        actions.className = 'app-actions';
+
+        const storeBtn = document.createElement('a');
+        storeBtn.className = 'btn primary';
+        storeBtn.href = app.appStoreUrl || '#';
+        storeBtn.target = '_blank';
+        storeBtn.rel = 'noopener';
+        storeBtn.textContent = 'View on App Store';
+
+        const policyBtn = document.createElement('a');
+        policyBtn.className = 'btn secondary';
+        policyBtn.href = app.policyUrls?.privacy || SITE_CONFIG.globalPrivacyUrl || '#';
+        policyBtn.textContent = 'Privacy';
+
+        const supportBtn = document.createElement('a');
+        supportBtn.className = 'btn ghost';
+        supportBtn.href = '#contact';
+        supportBtn.textContent = 'Support';
+
+        actions.appendChild(storeBtn);
+        actions.appendChild(policyBtn);
+        actions.appendChild(supportBtn);
+
+        copy.appendChild(h3);
+        if (app.tagline) copy.appendChild(tagline);
+        if (app.shortBlurb) copy.appendChild(blurb);
+        copy.appendChild(actions);
+
+        slide.appendChild(media);
+        slide.appendChild(copy);
+
+        track.appendChild(slide);
+      });
+    }
+
+    function renderDots() {
+      if (!dotsWrap) return;
+      dotsWrap.innerHTML = '';
+      APPS.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.className = 'dot-btn';
+        b.type = 'button';
+        b.setAttribute('aria-label', `Go to app ${i + 1}`);
+        b.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(b);
+      });
+    }
+
+    function updateDots() {
+      if (!dotsWrap) return;
+      [...dotsWrap.children].forEach((child, i) => {
+        child.setAttribute('aria-current', i === index ? 'true' : 'false');
+      });
+    }
+
+    function updateButtons() {
+      // For looping carousel we keep enabled; but if 1 app, disable nav
+      const single = APPS.length <= 1;
+      if (prevBtn) prevBtn.disabled = single;
+      if (nextBtn) nextBtn.disabled = single;
+    }
+
+    function updateTrackPosition() {
+      if (!track) return;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function renderDetails(app) {
+      if (longDescPanel) {
+        longDescPanel.innerHTML = '';
+        const title = document.createElement('h4');
+        title.textContent = `${app.name} — Overview`;
+        longDescPanel.appendChild(title);
+
+        (app.longDescription || []).forEach(pTxt => {
+          const p = document.createElement('p');
+          p.textContent = pTxt;
+          longDescPanel.appendChild(p);
+        });
+
+        if (app.features?.length) {
+          const fTitle = document.createElement('h4');
+          fTitle.textContent = 'Key features';
+          longDescPanel.appendChild(fTitle);
+          const ul = document.createElement('ul');
+          app.features.forEach(f => {
+            const li = document.createElement('li');
+            li.textContent = f;
+            ul.appendChild(li);
+          });
+          longDescPanel.appendChild(ul);
+        }
+      }
+
+      if (kvPanel) {
+        kvPanel.innerHTML = '';
+        const rows = [
+          ['Platform', app.platforms || '—'],
+          ['Version', app.version || '—'],
+          ['Last updated', app.updated || '—'],
+          ['Price', app.priceLabel || '—'],
+        ];
+        rows.forEach(([k,v]) => {
+          const row = document.createElement('div');
+          row.className = 'kv-row';
+          const s = document.createElement('span');
+          s.textContent = k;
+          const strong = document.createElement('strong');
+          strong.textContent = v;
+          row.appendChild(s);
+          row.appendChild(strong);
+          kvPanel.appendChild(row);
+        });
+      }
+
+      if (supportKvPanel) {
+        supportKvPanel.innerHTML = '';
+        const supportRows = [
+          ['Support email', SITE_CONFIG.supportEmail],
+          ['App privacy', app.policyUrls?.privacy || SITE_CONFIG.globalPrivacyUrl || '—'],
+          ['Terms', app.policyUrls?.terms || SITE_CONFIG.globalTermsUrl || '—'],
+        ];
+
+        supportRows.forEach(([k,v]) => {
+          const row = document.createElement('div');
+          row.className = 'kv-row';
+          const s = document.createElement('span');
+          s.textContent = k;
+
+          const strong = document.createElement('strong');
+          if (String(v).startsWith('http') || String(v).startsWith('#')) {
+            const a = document.createElement('a');
+            a.href = v;
+            a.textContent = String(v) === '#' ? 'Add link' : 'Open';
+            a.className = 'btn ghost';
+            a.style.padding = '4px 8px';
+            a.style.fontSize = '11.5px';
+            a.style.borderRadius = '8px';
+            a.target = String(v).startsWith('http') ? '_blank' : '';
+            a.rel = String(v).startsWith('http') ? 'noopener' : '';
+            strong.textContent = '';
+            row.appendChild(s);
+            row.appendChild(a);
+            supportKvPanel.appendChild(row);
+            return;
+          }
+          strong.textContent = v;
+          row.appendChild(s);
+          row.appendChild(strong);
+          supportKvPanel.appendChild(row);
+        });
+      }
+    }
+
+    function goTo(newIndex) {
+      if (!APPS.length) return;
+      index = (newIndex + APPS.length) % APPS.length;
+      updateTrackPosition();
+      updateDots();
+      updateButtons();
+      renderDetails(APPS[index]);
+      syncAriaLive();
+    }
+
+    // Optional aria-live announcer for slide changes
+    let liveRegion = null;
+    function ensureLiveRegion(){
+      if (liveRegion) return liveRegion;
+      liveRegion = document.createElement('div');
+      liveRegion.className = 'sr-only';
+      liveRegion.setAttribute('aria-live', 'polite');
+      liveRegion.setAttribute('aria-atomic', 'true');
+      document.body.appendChild(liveRegion);
+      return liveRegion;
+    }
+    function syncAriaLive(){
+      const lr = ensureLiveRegion();
+      const app = APPS[index];
+      lr.textContent = `Showing ${app.name}`;
+    }
+
+    function startAutoplay(){
+      stopAutoplay();
+      if (!autoplayOn || APPS.length <= 1) return;
+      autoplayTimer = setInterval(() => goTo(index + 1), SITE_CONFIG.autoplayMs || 4500);
+    }
+    function stopAutoplay(){
+      if (autoplayTimer) clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+
+    function renderAppSelect(){
+      if (!appSelect) return;
+      APPS.forEach(app => {
+        const opt = document.createElement('option');
+        opt.value = app.name;
+        opt.textContent = app.name;
+        appSelect.appendChild(opt);
+      });
+    }
+
+    function wireControls(){
+      if (prevBtn) prevBtn.addEventListener('click', () => { goTo(index - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { goTo(index + 1); });
+
+      // Keyboard support on carousel container
+      const carouselRegion = document.querySelector('.carousel');
+      if (carouselRegion) {
+        carouselRegion.tabIndex = 0;
+        carouselRegion.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(index - 1); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
+        });
+        carouselRegion.addEventListener('mouseenter', () => stopAutoplay());
+        carouselRegion.addEventListener('mouseleave', () => startAutoplay());
+        carouselRegion.addEventListener('focusin', () => stopAutoplay());
+        carouselRegion.addEventListener('focusout', () => startAutoplay());
+      }
+
+      if (autoplayToggle) {
+        autoplayToggle.addEventListener('click', () => {
+          autoplayOn = !autoplayOn;
+          autoplayToggle.textContent = `Autoplay: ${autoplayOn ? 'On' : 'Off'}`;
+          if (autoplayOn) startAutoplay(); else stopAutoplay();
+        });
+      }
+    }
+
+    /**
+     * --------- Contact form: mailto builder ---------
+     */
+    const form = document.getElementById('contact-form');
+    function buildMailto({name, email, app, message}){
+      const subjectBase = app ? `Support: ${app}` : 'App Support';
+      const subject = encodeURIComponent(subjectBase);
+      const bodyLines = [
+        name ? `Name: ${name}` : null,
+        email ? `Email: ${email}` : null,
+        app ? `App: ${app}` : null,
+        '',
+        message || ''
+      ].filter(v => v !== null);
+      const body = encodeURIComponent(bodyLines.join('\n'));
+      return `mailto:${SITE_CONFIG.supportEmail}?subject=${subject}&body=${body}`;
+    }
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const payload = {
+          name: String(data.get('name') || '').trim(),
+          email: String(data.get('email') || '').trim(),
+          app: String(data.get('app') || '').trim(),
+          message: String(data.get('message') || '').trim(),
+        };
+        const link = buildMailto(payload);
+        window.location.href = link;
+      });
+    }
+
+    /**
+     * --------- Init ---------
+     */
+    function init(){
+      if (!APPS.length) return;
+      renderSlides();
+      renderDots();
+      renderAppSelect();
+      wireControls();
+      goTo(0);
+      startAutoplay();
+      updateButtons();
+    }
+
+    init();
+  </script>
+</body>
+</html>
